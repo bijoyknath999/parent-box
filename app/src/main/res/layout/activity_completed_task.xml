@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CompletedTask"
+    android:orientation="vertical"
+    android:id="@+id/completed_task_swipe">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/completed_task_toolbar"
+            layout="@layout/main_bar"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CompletedTaskList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/completed_task_toolbar"/>
+
+        <ProgressBar
+            android:id="@+id/completed_task_progressbar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/quizbgColor"/>
+        <TextView
+            android:id="@+id/completed_task_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No Task found"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

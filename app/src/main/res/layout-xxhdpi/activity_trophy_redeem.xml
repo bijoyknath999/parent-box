@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TrophyRedeem"
+    android:orientation="vertical"
+    android:id="@+id/child_trophy_swipe">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/Childs_trophy_toolbar"
+            layout="@layout/main_bar"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/TrophyList"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/Childs_trophy_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ProgressBar
+            android:id="@+id/child_trophy_progressbar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/quizbgColor"/>
+        <TextView
+            android:id="@+id/child_trophy_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No Task found"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

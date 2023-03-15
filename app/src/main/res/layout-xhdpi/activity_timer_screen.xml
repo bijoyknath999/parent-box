@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerScreen"
+    android:background="@color/quizbgColor">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_text"
+        android:text="Build patience by making the child wait for the 2nd task and delay gratification"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_below="@+id/timer_text"
+        android:layout_above="@+id/timer_interval_time">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hour"
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+        <NumberPicker
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/timePicker"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:tooltipText="Month"
+            android:theme="@style/DefaultNumberPickerTheme"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Minute"
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/timePicker2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:tooltipText="Minute"
+                android:theme="@style/DefaultNumberPickerTheme"/>
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_interval_time"
+        android:text=""
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/timer_continue_btn"/>
+
+    <Button
+        android:id="@+id/timer_continue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the second task"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:background="@drawable/next_button"
+        android:textAllCaps="false"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
+</RelativeLayout>

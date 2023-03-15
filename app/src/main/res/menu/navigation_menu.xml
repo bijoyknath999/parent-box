@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/your_tasks"
+        android:title="Your tasks"
+        android:icon="@drawable/ic_tasks"/>
+
+    <item
+        android:id="@+id/your_childs"
+        android:title="Child list"
+        android:icon="@drawable/ic_kids"/>
+    <item
+        android:id="@+id/trophies_list"
+        android:title="Trophies collected"
+        android:icon="@drawable/ic_trophy"/>
+    <item
+        android:id="@+id/Completed_task_list"
+        android:title="Completed task"
+        android:icon="@drawable/ic_completed_task"/>
+
+    <item android:title="Others">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/gifting_tips"
+                    android:title="Gifting Tips"
+                    android:icon="@drawable/ic_gift"/>
+                <item
+                    android:id="@+id/about_us"
+                    android:title="About Us"
+                    android:icon="@drawable/ic_about"/>
+                <item
+                    android:id="@+id/learn_more"
+                    android:title="Tutorial"
+                    android:icon="@drawable/ic_learn"/>
+                <item
+                    android:id="@+id/contact_us"
+                    android:title="Contact Us"
+                    android:icon="@drawable/ic_contact"/>
+                <item
+                    android:id="@+id/share_app"
+                    android:title="Share App"
+                    android:icon="@drawable/ic_share"/>
+
+            </group>
+        </menu>
+    </item>
+
+
+
+
+</menu>

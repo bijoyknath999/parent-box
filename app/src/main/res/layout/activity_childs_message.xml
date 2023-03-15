@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChildsMessage"
+    android:background="@color/quizbgColor">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/child_message_text"
+        android:layout_centerInParent="true"
+        android:text="Hey dear, you have a
+gift waiting for you! You need to complete few tasks to know the gift and get clues to hunt
+for it. \nLet's continue."
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/childs_message_continue"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:background="@color/quizbuttonColor"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

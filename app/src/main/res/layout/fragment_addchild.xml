@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/add_child_fragment_layout"
+    tools:context=".Fragments.FragmentAddChild">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:padding="10dp"
+            android:background="@color/quizbgColor">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+
+                <EditText
+                    android:id="@+id/fragment_child_name"
+                    android:drawableEnd="@drawable/ic_profile"
+                    android:drawableTint="@color/colorTextBlack"
+                    android:hint="Enter your child’s name"
+                    android:textColor="@color/colorTextBlack"
+                    android:textCursorDrawable="@drawable/custom_cursor_black"
+                    android:textColorLink="@android:color/black"
+                    android:textColorHighlight="@android:color/transparent"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:cursorVisible="true"
+                    android:focusable="true"
+                    android:inputType="text"
+                    android:background="@drawable/edit_text_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"/>
+
+                <EditText
+                    android:id="@+id/fragment_dob"
+                    android:drawableEnd="@drawable/ic_date"
+                    android:drawableTint="@color/colorTextBlack"
+                    android:hint="Month and Year of birth"
+                    android:textColor="@color/colorTextBlack"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:background="@drawable/edit_text_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:focusable="false"
+                    android:inputType="none"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/add_child_fragment_layout2"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note : "
+                        android:textStyle="normal"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_child_notes"
+                        android:textSize="15sp"
+                        android:layout_margin="10dp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/fragment_child_submit_btn"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:background="@drawable/next_button"
+                        android:layout_margin="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            </ScrollView>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</RelativeLayout>

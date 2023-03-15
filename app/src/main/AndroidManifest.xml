@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.handikapp.parentbox">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:hardwareAccelerated="true"
+        android:theme="@style/AppTheme">
+
+
+        <activity
+            android:name=".Tutorial"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme2" />
+        <activity
+            android:name=".ContactUs"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".GiftingTips"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".AboutUs"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".GiftShareCompleted"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".TrophyRedeem"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".CompletedTask"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".LeftClass"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".GiftingShare"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".CluesScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".SingleTaskSelect"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarForSingleTasks" />
+        <activity
+            android:name=".SelectChild"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".YourTasks"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".CreateTask"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarForCreateTask"/>
+        <activity
+            android:name=".RandomsTask"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".ChildsMessage"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".IntervalTimer"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".TimerScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".LockScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".ResultsWithClues"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeForResult" />
+        <activity
+            android:name=".Results"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeForResult" />
+        <activity
+            android:name=".ParentsTaskList"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".ChildsList"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".ImageViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".SingleTasks"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarForSingleTasks" />
+        <activity
+            android:name=".OurTasks"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeMain" />
+        <activity
+            android:name=".ChooseImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".AddChild"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme2"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".LogInScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme2" />
+        <activity
+            android:name=".QuizScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarThemeQuiz" />
+        <activity
+            android:name=".IntroScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme2" />
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/NoActionBarThemeMain" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".Utils.CountTimer"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/quizbgColor" />
+
+        <service
+            android:name=".Notifications.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.handikapp.parentbox.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/ad_id" />
+    </application>
+
+</manifest>

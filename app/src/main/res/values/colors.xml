@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#252c4a</color>
+    <color name="quizbgColor">#252c4a</color>
+    <color name="quizborderColor">#21486a</color>
+    <color name="quizbuttonColor">#107eeb</color>
+    <color name="quiztextColor">#8b94bc</color>
+    <color name="AppNametextColor">#FE2E5C</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="green">#008000</color>
+    <color name="grey">#C0C0C0</color>
+
+</resources>

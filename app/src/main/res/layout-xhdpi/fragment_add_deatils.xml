@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Quiz.FragmentAddDeatils"
+    android:background="@color/quizbgColor"
+    android:id="@+id/create_task_layout_main">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/create_task_question_btn"
+        android:padding="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter task title below"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+            <EditText
+                android:id="@+id/create_task_title"
+                android:textColorHint="@color/grey"
+                android:hint="Give a name for the task you want your kids to learn"
+                android:textColor="@android:color/white"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textSize="16sp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorLink="@android:color/white"
+                android:textColorHighlight="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="textMultiLine"
+                android:background="@drawable/quiz_button_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/create_task_image"
+                    android:src="@drawable/ic_cam"/>
+
+                <TextView
+                    android:id="@+id/create_task_image_textt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:text="Take a picture of what you want to teach kids (eg book page) or select from gallery"/>
+
+                <TextView
+                    android:id="@+id/create_task_image_textt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:text="Change Picture"
+                    android:textAlignment="center"
+                    android:visibility="gone"/>
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter task content below"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+            <EditText
+                android:id="@+id/create_task_description"
+                android:hint="Enter content that you want to teach your kids: Type or copy paste from a website"
+                android:textColor="@android:color/black"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textSize="16sp"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@drawable/custom_cursor_black"
+                android:textColorLink="@android:color/black"
+                android:textColorHighlight="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:background="@drawable/quiz_button_border_white"
+                android:layout_width="match_parent"
+                android:paddingBottom="30dp"
+                android:paddingTop="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/create_task_question_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Question"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:background="@drawable/next_button"
+        android:textAllCaps="false"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CluesScreen"
+    android:background="@color/quizbgColor">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clues_text"
+        android:text="Clues to find the gift"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/clues_text"
+        android:layout_above="@+id/clues_continue_btn"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter clues below"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+        <EditText
+            android:textColorHint="@color/grey"
+            android:id="@+id/clues_edittext"
+            android:textColor="@android:color/white"
+            android:hint="@string/clues_message"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/custom_cursor"
+            android:textColorLink="@android:color/white"
+            android:textColorHighlight="@android:color/transparent"
+            android:focusable="true"
+            android:textSize="16sp"
+            android:background="@drawable/quiz_button_border"
+            android:layout_width="match_parent"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/clues_continue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:background="@drawable/next_button"
+        android:textAllCaps="false"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"/>
+
+</RelativeLayout>

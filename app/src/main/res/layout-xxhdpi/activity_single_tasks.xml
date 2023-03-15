@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SingleTasks"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/single_scroll_layout"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@android:color/white"
+        android:src="@drawable/ic_play"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/single_tasks_timer"
+        android:background="@drawable/textcircle"
+        android:textColor="@color/quizbgColor"
+        android:text="60s"
+        android:textSize="22sp"
+        android:padding="15dp"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        android:layout_gravity="bottom|end"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

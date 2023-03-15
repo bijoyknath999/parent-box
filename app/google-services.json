@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "671401412439",
+    "firebase_url": "https://parentbox-e9d84.firebaseio.com",
+    "project_id": "parentbox-e9d84",
+    "storage_bucket": "parentbox-e9d84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671401412439:android:bf5bdb217ab29a160b6012",
+        "android_client_info": {
+          "package_name": "com.handikapp.parentbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671401412439-3lm6cr8ekppuo4fa54vnkovjpl1i21m4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.handikapp.parentbox",
+            "certificate_hash": "ba081a21c424f4c296e017bb649010a7a84268c7"
+          }
+        },
+        {
+          "client_id": "671401412439-map9egnk7v7qdi1gf44obf8sgjvpfuuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.handikapp.parentbox",
+            "certificate_hash": "5735aee633b282850fefa54563df2b631fef9121"
+          }
+        },
+        {
+          "client_id": "671401412439-fpb5lk02rvrben8sgf0vvrfl0901fd6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7sH8vLytCD7zIOfj3HVGgG8w6nWdLcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671401412439-fpb5lk02rvrben8sgf0vvrfl0901fd6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

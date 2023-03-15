@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntervalTimer"
+    android:background="@color/quizbgColor">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thanks for your patience. Good things come to those who wait."
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="60dp"
+        android:padding="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/interval_ready_text"
+        android:text="Your next task is ready. Let's find out the clues"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/fjallaone_regular"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:padding="20dp"/>
+
+
+        <ProgressBar
+            android:id="@+id/interval_timer_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:indeterminateTint="@android:color/white"
+            android:max="1000"
+            android:progress="1000"
+            android:progressDrawable="@drawable/circle"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/interval_timer_textViewCount"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"/>
+
+
+    <Button
+        android:id="@+id/interval_timer_continue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:background="@drawable/next_button"
+        android:textAllCaps="false"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:gravity="center"/>
+</RelativeLayout>

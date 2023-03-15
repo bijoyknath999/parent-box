@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Parent Box</string>
+    <string name="add_child_notes">"We will track your child’s age to pick the right tasks."</string>
+    <string name="submit_btn_1">"Submit &amp; Hide gift"</string>
+    <string name="message_1">"We recommend you strongly getting a gift as it's required for every challenge. Even a toffee or book from library can be a gift. It's not the value of the gift but the recognition it serves that's important. Please read our gifting tips in the app to know more"</string>
+    <string name="message_2">We
+recommend using gifts even if it is small (eg, a candy or extra TV time). Using a gift acts as a
+reward and enables the child to wait for it and build patience. If you choose to proceed
+without a gift, the child will receive a virtual trophy inside the app. Trophies collected by kids can be exchanged later for gifts from parents.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="browse_available_tasks">Browse available tasks</string>
+
+    <string name="lockdesc">"Now lock the app and give the device to
+your child. They will have to complete task-1 to see the gift and then wait for the 2nd task.
+Completing task-2 will reveal clues to find the gift. They have to find the gift using the clues.
+\nLet\'s make children learn, be more active, imagine and have fun with each gifting!"</string>
+    <string name="clues_message">"Use minimum words and play with your childs imagination. \nLet your child think and search for the gift."</string>
+    <string name="ad_id">ca-app-pub-3037078034549596~7200004571</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3037078034549596/8868309462</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3037078034549596/6168271734</string>
+</resources>

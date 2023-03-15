@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChildsList"
+    android:orientation="vertical"
+    android:id="@+id/child_list_swipe">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/Childs_List_toolbar"
+            layout="@layout/main_bar"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/child_list_selected_layout"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/Childs_List_toolbar">
+        <TextView
+            android:id="@+id/child_list_select_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:textColor="@color/quizbgColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Selected child for task and notification :"/>
+
+        <TextView
+            android:id="@+id/child_list_selected_child"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="No child selected" />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ChildsList"
+            android:layout_below="@+id/child_list_selected_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+        <ProgressBar
+            android:id="@+id/child_list_progressbar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/quizbgColor"/>
+        <TextView
+            android:id="@+id/child_list_not_found"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No Child found"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

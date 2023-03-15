@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home_fragment"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/add_child_fragment"
+        android:title="Add child"
+        android:icon="@drawable/ic_add"/>
+
+    <item
+        android:id="@+id/play_mode_fragment"
+        android:title="Play mode"
+        android:icon="@drawable/ic_play"
+        app:showAsAction="ifRoom|withText"/>
+
+</menu>

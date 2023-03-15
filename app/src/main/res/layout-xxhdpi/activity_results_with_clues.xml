@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quizbgColor"
+    tools:context=".ResultsWithClues">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/results_clues_finish_btn">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/results_clues_congratulations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Hey, Congratulations!"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/results_clues_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_margin="5dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="Username" />
+
+            <TextView
+                android:id="@+id/results_here_is_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="Here is your gift"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/results_clues_layout1">
+
+            <ImageView
+                android:id="@+id/results_clues_gift_img"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:contentDescription="image"
+                android:src="@drawable/trophy"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="10dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/results_clues_tap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="Tap Here"/>
+
+            <TextView
+                android:id="@+id/results_clues_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Clues to find the gift :"
+                android:visibility="gone"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:id="@+id/results_clues_scroll">
+
+                <TextView
+                    android:id="@+id/results_clues"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:text="Check your mother fav box" />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/results_clues_finish_btn"
+        android:layout_alignParentBottom="true"
+        android:text="Finish"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:background="@drawable/tutorial_button"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"/>
+
+
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/results_clues_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
+    <!--END-->

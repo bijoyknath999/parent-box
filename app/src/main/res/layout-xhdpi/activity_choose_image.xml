@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseImage"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:id="@+id/full_layout">
+
+
+    <TextView
+        android:id="@+id/Snap_Top_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Your Gift"
+        android:textStyle="bold"
+        android:textColor="@color/AppNametextColor"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+    <ImageView
+        android:id="@+id/img_gift"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/gift"
+        android:layout_margin="10dp"/>
+    <ImageView
+        android:id="@+id/selected_img"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="400dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/capture_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Take a snap of the gift"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:background="@drawable/next_button"
+            android:textAllCaps="false"
+            android:layout_margin="15dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/submit_btn_layout">
+            <Button
+                android:id="@+id/img_submit_btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/submit_btn_1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@drawable/next_button"
+                android:textAllCaps="false"
+                android:layout_margin="15dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+        <Button
+            android:id="@+id/pick_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Pick image of gift from gallery"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:background="@drawable/skip_btn"
+            android:layout_margin="15dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/no_gifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" I don't have a gift ready yet"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

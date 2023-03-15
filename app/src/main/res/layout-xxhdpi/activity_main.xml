@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawable_layout"
+    tools:context=".MainActivity"
+    android:background="@android:color/white"
+    tools:openDrawer="left">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_above="@id/bottomBar">
+
+    <include
+        android:id="@+id/main_page_toolbar"
+        layout="@layout/main_bar" />
+
+
+                <FrameLayout
+                    android:id="@+id/main_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                </FrameLayout>
+
+
+        </LinearLayout>
+
+        <me.ibrahimsn.lib.SmoothBottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:backgroundColor="@color/quizbgColor"
+            app:textColor="@android:color/white"
+            app:textSize="14sp"
+            app:iconSize="24dp"
+            app:indicatorColor="#2DFFFFFF"
+            app:indicatorRadius="10dp"
+            app:sideMargins="10dp"
+            app:itemPadding="10dp"
+            app:iconTint="#C8FFFFFF"
+            app:iconTintActive="#FFFFFF"
+            app:menu="@menu/menu_bottom"
+            android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@android:color/white"
+        app:itemTextColor="@color/quizbgColor"
+        app:itemIconTint="@color/quizbgColor"
+        app:menu="@menu/navigation_menu">
+
+    </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
