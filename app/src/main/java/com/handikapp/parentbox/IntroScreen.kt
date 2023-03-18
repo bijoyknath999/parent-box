@@ -3,6 +3,7 @@ package com.handikapp.parentbox
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -37,7 +38,7 @@ class IntroScreen: AppIntro() {
 
 
 
-
+        setupPermissions()
 
     }
 
@@ -63,28 +64,74 @@ class IntroScreen: AppIntro() {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
 
-        if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED) {
-            makeRequest()
+        val permission3 = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission4 = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS,
+            )
+            val permission5 = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES,
+            )
+            if (permission != PackageManager.PERMISSION_GRANTED
+                && permission2 != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED
+                && permission4 != PackageManager.PERMISSION_GRANTED
+                && permission5 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
+            else
+            {
+                val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("firstTime", false)
+                editor.apply()
+                var intent = Intent(this, LogInScreen::class.java)
+                startActivity(intent)
+                finish()
+            }
+        } else {
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
+            else
+            {
+                val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("firstTime", false)
+                editor.apply()
+                var intent = Intent(this, LogInScreen::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
+    private fun makeRequest() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.READ_MEDIA_IMAGES),
+                RECORD_REQUEST_CODE
+            )
         }
         else
         {
-            val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("firstTime", false)
-            editor.apply()
-            var intent = Intent(this, LogInScreen::class.java)
-            startActivity(intent)
-            finish()
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                RECORD_REQUEST_CODE
+            )
         }
+    }
 
-    }
-    private fun makeRequest() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
-            RECORD_REQUEST_CODE
-        )
-    }
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray

@@ -11,6 +11,7 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.media.ExifInterface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
@@ -577,25 +578,53 @@ class FragmentAddDeatils : Fragment(), IOnBackPressed {
 
     private fun setupPermissions() {
         val permission = ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.CAMERA,
+            requireContext(),
+            Manifest.permission.CAMERA,
         )
 
         val permission2 = ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
 
-        if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED) {
-            makeRequest()
+        val permission3 = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission4 = ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_IMAGES,
+            )
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED && permission4 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
+
+        } else {
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
         }
     }
     private fun makeRequest() {
-        ActivityCompat.requestPermissions(
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
                 requireActivity(),
-                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_MEDIA_IMAGES),
                 RECORD_REQUEST_CODE
-        )
+            )
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                RECORD_REQUEST_CODE
+            )
+        }
     }
     override fun onRequestPermissionsResult(
             requestCode: Int,

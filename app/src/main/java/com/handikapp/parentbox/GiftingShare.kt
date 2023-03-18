@@ -11,6 +11,7 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.media.ExifInterface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
@@ -52,7 +53,7 @@ class GiftingShare : AppCompatActivity() {
     var Image_Path : String = ""
     var Age : String = ""
 
-    lateinit var imagePath : File
+    lateinit var imagePath : String
     lateinit var imagefile : File
     lateinit var Imguri : Uri
     lateinit var currentphoto : String
@@ -103,7 +104,7 @@ class GiftingShare : AppCompatActivity() {
         if (ActivityCompat.checkSelfPermission(this, permissionsRequired[0]) == PackageManager.PERMISSION_GRANTED) {
 
             if (!Image_Path.isEmpty()) {
-                var returnedUri = Uri.fromFile(File(Image_Path))
+                var returnedUri = Uri.parse(Image_Path)
                 val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, returnedUri)
                 val imageRounded = Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
                 val canvas = Canvas(imageRounded)
@@ -174,7 +175,10 @@ class GiftingShare : AppCompatActivity() {
                 {
                     val bitmap: Bitmap = takeScreenshot()!!
                     saveBitmap(bitmap)
-                    saveImage()
+                    val image = getImage0fView(gifting_img_selfie)
+                    if (image != null) {
+                        SaveToStorage(image)
+                    }
                     SendData()
                     shareIt()
                 }
@@ -225,6 +229,53 @@ class GiftingShare : AppCompatActivity() {
             setupPermissions()
         }
     }
+
+    private fun getImage0fView(view: ImageView): Bitmap?
+    {
+        var  image : Bitmap? = null
+        try {
+            image = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight,Bitmap.Config.ARGB_8888)
+            val canvas = Canvas (image)
+            view.draw( canvas)
+        }catch (e : Exception)
+        {
+
+        }
+        return image
+    }
+
+    private fun SaveToStorage(bitmap: Bitmap) {
+        val imageName = String.format("%d.jpg", System.currentTimeMillis())
+        var fos: OutputStream? = null
+        var imageUri : Uri? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            this.contentResolver?.also { resolver ->
+                val contentValues = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, imageName)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH,Environment.DIRECTORY_PICTURES)
+                }
+
+                imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues)
+                fos = imageUri?.let {
+                    resolver.openOutputStream(it)
+                }
+            }
+        }
+        else
+        {
+            val imagesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val image = File (imagesDirectory, imageName)
+            fos = FileOutputStream(image)
+        }
+        fos?.use{
+            bitmap.compress(Bitmap.CompressFormat.JPEG,  100, it)
+            val intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+            intent.data = imageUri
+            sendBroadcast(intent)
+        }
+    }
+
 
     private fun sendDataNotify() {
         if (!Uploaded) {
@@ -403,21 +454,32 @@ class GiftingShare : AppCompatActivity() {
     }
 
     fun saveBitmap(bitmap: Bitmap) {
-        val sdCard = Environment.getExternalStorageDirectory()
-        val dir = File(sdCard.absolutePath + "/Parent Box")
-        dir.mkdirs()
-        val fileName = String.format("%d.jpg", System.currentTimeMillis())
-        imagePath = File(dir, fileName)
-        val fos: FileOutputStream
-        try {
-            fos = FileOutputStream(imagePath)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-            fos.flush()
-            fos.close()
-        } catch (e: FileNotFoundException) {
-            Log.e("GREC", e.message, e)
-        } catch (e: IOException) {
-            Log.e("GREC", e.message, e)
+        val imageName = String.format("%d.jpg", System.currentTimeMillis())
+        var fos: OutputStream? = null
+        var imageUri : Uri? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            this.contentResolver?.also { resolver ->
+                val contentValues = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, imageName)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH,Environment.DIRECTORY_PICTURES)
+                }
+
+                imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues)
+                imagePath = imageUri.toString();
+                fos = imageUri?.let {
+                    resolver.openOutputStream(it)
+                }
+            }
+        }
+        else
+        {
+            val imagesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val image = File (imagesDirectory, imageName)
+            fos = FileOutputStream(image)
+        }
+        fos?.use{
+            bitmap.compress(Bitmap.CompressFormat.JPEG,  100, it)
         }
     }
 
@@ -427,26 +489,8 @@ class GiftingShare : AppCompatActivity() {
             .text("" + PName + " gifted " + CName + " for learning about '" + Task_One_Title + "' and '" + Task_Two_Title + "' through Parent Box" +
                     "\nLink : https://play.google.com/store/apps/details?id=" + packageName)
             .subject("Share from Parent Box")
-            .stream(Uri.parse(imagePath.toString()), "image/jpeg")
+            .stream(Uri.parse(imagePath), "image/jpeg")
             .share()
-    }
-
-    fun saveImage() {
-        val draw = gifting_img_selfie.drawable as BitmapDrawable
-        val bitmap = draw.bitmap
-        var outStream: FileOutputStream? = null
-        val sdCard = Environment.getExternalStorageDirectory()
-        val dir = File(sdCard.absolutePath + "/Parent Box")
-        dir.mkdirs()
-        val fileName = String.format("%d.jpg", System.currentTimeMillis())
-        outFile = File(dir, fileName)
-        outStream = FileOutputStream(outFile)
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outStream)
-        outStream.flush()
-        outStream.close()
-        val intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-        intent.data = Uri.fromFile(outFile)
-        sendBroadcast(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -612,25 +656,52 @@ class GiftingShare : AppCompatActivity() {
 
     private fun setupPermissions() {
         val permission = ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA,
+            this,
+            Manifest.permission.CAMERA,
         )
 
         val permission2 = ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
 
-        if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED) {
-            makeRequest()
+        val permission3 = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission4 = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES,
+            )
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED && permission4 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
+        } else {
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
         }
     }
     private fun makeRequest() {
-        ActivityCompat.requestPermissions(
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
                 this,
-                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_MEDIA_IMAGES),
                 RECORD_REQUEST_CODE
-        )
+            )
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                RECORD_REQUEST_CODE
+            )
+        }
     }
     override fun onRequestPermissionsResult(
             requestCode: Int,

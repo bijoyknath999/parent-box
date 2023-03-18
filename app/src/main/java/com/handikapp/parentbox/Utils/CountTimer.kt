@@ -1,6 +1,7 @@
 package com.handikapp.parentbox.Utils
 
 import android.app.*
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -68,7 +69,7 @@ class CountTimer : Service() {
         val notificationIntent = Intent(this, IntervalTimer::class.java)
         val pendingIntent = PendingIntent.getActivity(
                 this,
-                0, notificationIntent, 0
+                0, notificationIntent, FLAG_IMMUTABLE
         )
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(title)

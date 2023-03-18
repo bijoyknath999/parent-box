@@ -119,7 +119,7 @@ class Results : AppCompatActivity() {
         }
         else
         {
-            var returnedUri = Uri.fromFile(File(ImagePath))
+            var returnedUri = Uri.parse(ImagePath)
             val bitmap : Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, returnedUri)
             val imageRounded = Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
             val canvas = Canvas(imageRounded)

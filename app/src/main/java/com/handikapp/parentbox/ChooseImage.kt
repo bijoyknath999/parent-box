@@ -2,6 +2,7 @@ package com.handikapp.parentbox
 
 import android.Manifest
 import android.app.Dialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,10 +25,7 @@ import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.handikapp.parentbox.Utils.Constants
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
 
 
 class ChooseImage : AppCompatActivity() {
@@ -58,10 +56,13 @@ class ChooseImage : AppCompatActivity() {
     lateinit var Imguri : Uri
 
     private val RECORD_REQUEST_CODE = 101
-    private var permissionsRequired = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    private var permissionsRequired = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE)
+    } else {
+        arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
 
-
-
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,9 +80,6 @@ class ChooseImage : AppCompatActivity() {
         if (intent.hasExtra("class")) {
             actname = intent.getStringExtra("class")!!
         }
-
-
-
 
         CaptureBTN = findViewById<Button>(R.id.capture_btn)
         PickBTN = findViewById<Button>(R.id.pick_btn)
@@ -143,7 +141,9 @@ class ChooseImage : AppCompatActivity() {
     }
 
     private fun hideandsubmit() {
-        saveImage()
+        val bitmap = getImage0fView(SelectedImage)
+        if (bitmap!=null)
+            SaveToStorage(bitmap)
     }
 
 
@@ -187,7 +187,73 @@ class ChooseImage : AppCompatActivity() {
 
     }
 
+    private fun getImage0fView(view: ImageView): Bitmap?
+    {
+        var  image : Bitmap? = null
+        try {
+            image = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight,Bitmap.Config.ARGB_8888)
+            val canvas = Canvas (image)
+            view.draw( canvas)
+        }catch (e : Exception)
+        {
 
+        }
+        return image
+    }
+
+
+    private fun SaveToStorage(bitmap: Bitmap) {
+        val imageName = String.format("%d.jpg", System.currentTimeMillis())
+        var fos: OutputStream? = null
+        var imageUri : Uri? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            this.contentResolver?.also { resolver ->
+                val contentValues = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, imageName)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH,Environment.DIRECTORY_PICTURES)
+                }
+
+                imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues)
+                fos = imageUri?.let {
+                    resolver.openOutputStream(it)
+                }
+            }
+        }
+        else
+        {
+            val imagesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val image = File (imagesDirectory, imageName)
+            fos = FileOutputStream(image)
+        }
+        fos?.use{
+            bitmap.compress(Bitmap.CompressFormat.JPEG,  100, it)
+            val intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+            intent.data = imageUri
+            sendBroadcast(intent)
+
+            val sharedPreferences = getSharedPreferences("sharedPreferences_tasks", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString(Constants.ImagePath, imageUri.toString())
+            editor.putBoolean(Constants.Task_Valid, true)
+            editor.putString(Constants.Class,actname)
+            editor.apply()
+
+            if (actname=="OurTasks")
+                TaskIntent = Intent(this, OurTasks::class.java)
+            else if(actname == "ParentsTaskList")
+                TaskIntent = Intent(this, ParentsTaskList::class.java)
+            else if(actname == "RandomsTask") {
+                TaskIntent = Intent(this, RandomsTask::class.java)
+            }
+            else
+                TaskIntent = Intent(this, MainActivity::class.java)
+
+            TaskIntent.putExtra("class","ChooseImage")
+            startActivity(TaskIntent)
+            finish()
+        }
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 123 && resultCode == RESULT_OK){
@@ -345,16 +411,43 @@ class ChooseImage : AppCompatActivity() {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
 
-        if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED) {
-            makeRequest()
+        val permission3 = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission4 = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES,
+            )
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED && permission4 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
+        } else {
+            if (permission2 != PackageManager.PERMISSION_GRANTED && permission != PackageManager.PERMISSION_GRANTED
+                && permission3 != PackageManager.PERMISSION_GRANTED) {
+                makeRequest()
+            }
         }
     }
     private fun makeRequest() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
-            RECORD_REQUEST_CODE
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_MEDIA_IMAGES),
+                RECORD_REQUEST_CODE
+            )
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                RECORD_REQUEST_CODE
+            )
+        }
     }
     override fun onRequestPermissionsResult(
         requestCode: Int,

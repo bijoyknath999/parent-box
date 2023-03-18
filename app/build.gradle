@@ -25,8 +25,8 @@ android {
         applicationId "com.handikapp.parentbox"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 21
-        versionName "2.6"
+        versionCode 23
+        versionName "2.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
