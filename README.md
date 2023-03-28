@@ -25,4 +25,4 @@ So, try out this app now! Enjoy learning and playing with your kids together and
 
 Want to learn more about parenting child, motherhood, and fatherhood? Check out our other good parenting apps. We hope that our app can give you the best parent education that you can use when you shape your child behavior.
 
-<a href="https://play.google.com/store/apps/details?id=com.handikapp.parentbox"><h4>App Link</h4></a>
+<a href="https://play.google.com/store/apps/details?id=com.handikapp.parentbox">App Link</a>
