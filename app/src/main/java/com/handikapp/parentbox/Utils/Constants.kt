@@ -28,7 +28,7 @@ object Constants {
     const val Task_Interval_hour = "interval_hour"
     const val Task_Interval_minute = "interval_minute"
     const val BASE_URL = "https://fcm.googleapis.com"
-    const val SERVER_KEY = "AAAAnFKkh1c:APA91bGs8GyDU8MoG5kC3fQV9-hWValv5s8eWHiNrVWLCJCDIW_68nqI2jlleRZ-jYRl_xc5-PgYimJSMvOCWXnMFbludxtaXZ9lMkD9w3zNOvEErlXlEwuj4NfiyfB6yo1OZ0ypsMyC"
+    const val SERVER_KEY = "Server_key"
     const val CONTENT_TYPE = "application/json"
     const val ChildName = "child_name"
     const val ChildID = "child_id"
